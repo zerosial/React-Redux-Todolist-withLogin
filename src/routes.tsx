@@ -1,9 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
-import Home from "components/Home";
-import Layout from "components/Layout";
-import SighUp from "components/SignUp";
-import SignIn from "components/SignIn";
-import Todo from "components/Todo";
+import Home from "pages/Home";
+import Layout from "pages/Layout";
+import SighUp from "pages/SignUp";
+import SignIn from "pages/SignIn";
+import Todo from "pages/Todo";
 
 export const router = createBrowserRouter([
   {
