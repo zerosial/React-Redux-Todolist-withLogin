@@ -10,8 +10,10 @@ import {
   FormHelperText,
 } from "@chakra-ui/react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const SignIn = () => {
+  const navigate = useNavigate();
   const [userInput, setUserInput] = useState({
     isDisabled: true,
     email: false,
@@ -97,7 +99,9 @@ const SignIn = () => {
         <Text color="gray.300" mb={6}>
           혹시 회원가입이 아직이신가요?
         </Text>
-        <Button w={80}>회원가입</Button>
+        <Button w={80} onClick={() => navigate("/signup")}>
+          회원가입
+        </Button>
       </Grid>
     </Container>
   );
