@@ -9,6 +9,7 @@ import {
   FormLabel,
   FormHelperText,
 } from "@chakra-ui/react";
+import { postSignIn } from "components/Api/Sign";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -20,11 +21,14 @@ const SignIn = () => {
     password: false,
   });
 
-  const formHandler = (e: any) => {
+  const formHandler = async (e: any) => {
     e.preventDefault();
     const email = (e.currentTarget.elements[0] as HTMLInputElement).value;
     const password = (e.currentTarget.elements[1] as HTMLInputElement).value;
-    // api 연결
+    const isSuccess = await postSignIn({ email, password });
+    if (isSuccess) {
+      navigate("/todo");
+    }
   };
 
   const emailValueHandler = (e: any) => {
