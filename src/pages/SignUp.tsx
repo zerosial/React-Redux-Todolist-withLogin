@@ -8,7 +8,7 @@ import {
   Input,
 } from "@chakra-ui/react";
 import { postSignUp } from "components/Api/Sign";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const SighUp = () => {
@@ -18,6 +18,13 @@ const SighUp = () => {
     password: false,
   });
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = window.localStorage.getItem("access_token");
+    if (token) {
+      navigate("/todo");
+    }
+  }, [navigate]);
 
   const formHandler = async (e: any) => {
     e.preventDefault();

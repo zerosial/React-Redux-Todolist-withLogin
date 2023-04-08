@@ -10,16 +10,21 @@ import {
   FormHelperText,
 } from "@chakra-ui/react";
 import { postSignIn } from "components/Api/Sign";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const SignIn = () => {
   const navigate = useNavigate();
-  const [userInput, setUserInput] = useState({
-    isDisabled: true,
-    email: false,
-    password: false,
-  });
+  const [isDisabled, setIsDisabled] = useState(true);
+  const [emailValid, setEmailValid] = useState(false);
+  const [passwordValid, setPasswordValid] = useState(false);
+
+  useEffect(() => {
+    const token = window.localStorage.getItem("access_token");
+    if (token) {
+      navigate("/todo");
+    }
+  }, [navigate]);
 
   const formHandler = async (e: any) => {
     e.preventDefault();
@@ -34,36 +39,26 @@ const SignIn = () => {
   const emailValueHandler = (e: any) => {
     const email = String(e.target.value);
     if (email.includes("@")) {
-      setUserInput((prevState) => {
-        return { ...prevState, email: true };
-      });
-      if (userInput.password) {
-        setUserInput((prevState) => {
-          return { ...prevState, isDisabled: false };
-        });
+      setEmailValid(true);
+      if (passwordValid) {
+        setIsDisabled(false);
       }
     } else {
-      setUserInput((prevState) => {
-        return { ...prevState, email: false, isDisabled: true };
-      });
+      setEmailValid(false);
+      setIsDisabled(true);
     }
   };
 
   const passwordValueHandler = (e: any) => {
     const password = String(e.target.value);
     if (password.length >= 8) {
-      setUserInput((prevState) => {
-        return { ...prevState, password: true };
-      });
-      if (userInput.email) {
-        setUserInput((prevState) => {
-          return { ...prevState, isDisabled: false };
-        });
+      setPasswordValid(true);
+      if (emailValid) {
+        setIsDisabled(false);
       }
     } else {
-      setUserInput((prevState) => {
-        return { ...prevState, password: false, isDisabled: true };
-      });
+      setPasswordValid(false);
+      setIsDisabled(true);
     }
   };
 
@@ -93,7 +88,7 @@ const SignIn = () => {
               mb={6}
               data-testid="signin-button"
               w={80}
-              isDisabled={userInput.isDisabled}
+              isDisabled={isDisabled}
             >
               로그인
             </Button>
