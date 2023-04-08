@@ -5,8 +5,8 @@ export async function createTodo({ todo }: any) {
     const response = await publicApi.post(`/todos`, {
       todo,
     });
-    if (response.status === 200) {
-      return true;
+    if (response.status === 201) {
+      return response.data;
     }
   } catch (error) {
     throw new Error((error as Error).message);
@@ -17,7 +17,6 @@ export async function getTodos() {
   try {
     const response = await publicApi.get(`/todos`);
     if (response.status === 200) {
-      console.log(response.data);
       return response.data;
     }
   } catch (error) {
@@ -32,7 +31,6 @@ export async function updateTodo({ id, todo, isCompleted }: any) {
       isCompleted,
     });
     if (response.status === 200) {
-      console.log(response.data);
       return response.data;
     }
   } catch (error) {

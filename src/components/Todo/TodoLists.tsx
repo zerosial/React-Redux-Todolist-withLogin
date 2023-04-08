@@ -45,8 +45,11 @@ const TodoLists = () => {
   }, []);
 
   const onAddTodoHandler = async (e: any) => {
+    e.preventDefault();
     const todo = (e.currentTarget.elements[0] as HTMLInputElement).value;
-    await createTodo({ todo });
+    const data = await createTodo({ todo });
+    setTodoData([...todoData, data]);
+    e.target[0].value = null;
   };
 
   return (
