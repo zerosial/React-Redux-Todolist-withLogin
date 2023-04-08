@@ -1,21 +1,29 @@
 import { updateTodo } from "components/Api/Todo";
 import { useState } from "react";
 
-const TodoUpdateItem = ({ id, title, isCompleted, onUpdate }: any) => {
+const TodoUpdateItem = ({
+  id,
+  title,
+  isCompleted,
+  onCancelModify,
+  onSubmitModify,
+}: any) => {
   const [isChecked, setIsChecked] = useState(isCompleted);
   const [inputValue, setInputValue] = useState(title);
+
   const checkboxHandler = async () => {
     await updateTodo({ id, todo: title, isCompleted: !isChecked });
     setIsChecked(!isChecked);
   };
 
-  const submitHandler = async () => {
-    await updateTodo({ id, todo: inputValue, isCompleted });
-    onUpdate(false);
+  const inputHandler = (e: any) => {
+    setInputValue(e.target.value);
   };
 
-  const cancelHandler = () => {
-    onUpdate(false);
+  const enterHandler = (e: any) => {
+    if (e.key === "Enter") {
+      onSubmitModify(inputValue);
+    }
   };
 
   return (
@@ -25,13 +33,17 @@ const TodoUpdateItem = ({ id, title, isCompleted, onUpdate }: any) => {
         <input
           data-testid="modify-input"
           value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
+          onChange={inputHandler}
+          onKeyDown={enterHandler}
         />
       </label>
-      <button data-testid="submit-button" onClick={submitHandler}>
+      <button
+        data-testid="submit-button"
+        onClick={() => onSubmitModify(inputValue)}
+      >
         제출
       </button>
-      <button data-testid="cancel-button" onClick={cancelHandler}>
+      <button data-testid="cancel-button" onClick={onCancelModify}>
         취소
       </button>
     </li>

@@ -1,13 +1,6 @@
-import { createTodo } from "components/Api/Todo";
-
-const TodoInput = () => {
-  const formHandler = async (e: any) => {
-    e.preventDefault();
-    const todo = (e.currentTarget.elements[0] as HTMLInputElement).value;
-    await createTodo({ todo });
-  };
+const TodoInput = ({ onAddTodo }: any) => {
   return (
-    <form onSubmit={formHandler}>
+    <form onSubmit={onAddTodo}>
       <input data-testid="new-todo-input" />
       <button data-testid="new-todo-add-button">추가</button>
     </form>

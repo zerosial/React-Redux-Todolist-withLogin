@@ -1,11 +1,8 @@
-import { deleteTodo, updateTodo } from "components/Api/Todo";
+import { updateTodo } from "components/Api/Todo";
 import { useState } from "react";
 
-const TodoItem = ({ id, title, isCompleted, onUpdate }: any) => {
+const TodoItem = ({ id, title, isCompleted, onModify, onDelete }: any) => {
   const [isChecked, setIsChecked] = useState(isCompleted);
-  const deleteHandler = async () => {
-    await deleteTodo({ id });
-  };
 
   const checkboxHandler = async () => {
     await updateTodo({ id, todo: title, isCompleted: !isChecked });
@@ -18,10 +15,10 @@ const TodoItem = ({ id, title, isCompleted, onUpdate }: any) => {
         <input type="checkbox" checked={isChecked} onChange={checkboxHandler} />
         <span>{title}</span>
       </label>
-      <button data-testid="modify-button" onClick={() => onUpdate(true)}>
+      <button data-testid="modify-button" onClick={onModify}>
         수정
       </button>
-      <button data-testid="delete-button" onClick={deleteHandler}>
+      <button data-testid="delete-button" onClick={onDelete}>
         삭제
       </button>
     </li>

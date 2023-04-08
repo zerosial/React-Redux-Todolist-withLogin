@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import TodoInput from "./TodoInput";
-import { getTodos } from "components/Api/Todo";
+import { createTodo, getTodos } from "components/Api/Todo";
 import { setToken } from "components/Api";
 import TodoItemList from "./TodoItemList";
 
@@ -44,9 +44,14 @@ const TodoLists = () => {
     getData();
   }, []);
 
+  const onAddTodoHandler = async (e: any) => {
+    const todo = (e.currentTarget.elements[0] as HTMLInputElement).value;
+    await createTodo({ todo });
+  };
+
   return (
     <>
-      <TodoInput />
+      <TodoInput onAddTodo={onAddTodoHandler} />
       {todoData.map((item) => (
         <TodoItemList
           key={item.id}
