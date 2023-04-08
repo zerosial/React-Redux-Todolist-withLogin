@@ -1,4 +1,5 @@
-import { Container, Heading } from "@chakra-ui/react";
+import { Container } from "@chakra-ui/react";
+import TodoLists from "components/Todo/TodoLists";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -14,7 +15,7 @@ const Todo = () => {
 
   return (
     <Container maxW={"100%"} p={"16px"}>
-      <Heading>Todo</Heading>
+      <TodoLists />
     </Container>
   );
 };
