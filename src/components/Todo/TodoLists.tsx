@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import TodoInput from "./TodoInput";
-import TodoItem from "./TodoItem";
 import { getTodos } from "components/Api/Todo";
 import { setToken } from "components/Api";
+import TodoItemList from "./TodoItemList";
 
 const DUMMY_DATA = [
   {
@@ -48,7 +48,7 @@ const TodoLists = () => {
     <>
       <TodoInput />
       {todoData.map((item) => (
-        <TodoItem
+        <TodoItemList
           key={item.id}
           id={item.id}
           title={item.todo}
