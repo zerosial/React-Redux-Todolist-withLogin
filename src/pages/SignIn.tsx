@@ -1,10 +1,18 @@
 import { Button, Container, Divider, Grid, Text } from "@chakra-ui/react";
 import { postSignIn } from "components/Api/Sign";
 import SignForm from "components/Sign/SignForm";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const SignIn = () => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = window.localStorage.getItem("access_token");
+    if (token) {
+      navigate("/todo");
+    }
+  }, [navigate]);
 
   const submitHandler = async (e: any) => {
     e.preventDefault();

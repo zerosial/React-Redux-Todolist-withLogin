@@ -1,25 +1,12 @@
-import {
-  Button,
-  Input,
-  FormControl,
-  FormLabel,
-  FormHelperText,
-} from "@chakra-ui/react";
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Button, FormControl } from "@chakra-ui/react";
+import { useState } from "react";
+import EmailInput from "./EmailInput";
+import PasswordInput from "./PasswordInput";
 
 const SignForm = ({ title, onSubmit }: any) => {
-  const navigate = useNavigate();
   const [isDisabled, setIsDisabled] = useState(true);
   const [emailValid, setEmailValid] = useState(false);
   const [passwordValid, setPasswordValid] = useState(false);
-
-  useEffect(() => {
-    const token = window.localStorage.getItem("access_token");
-    if (token) {
-      navigate("/todo");
-    }
-  }, [navigate]);
 
   const emailValueHandler = (e: any) => {
     const email = String(e.target.value);
@@ -50,22 +37,8 @@ const SignForm = ({ title, onSubmit }: any) => {
   return (
     <FormControl>
       <form onSubmit={onSubmit}>
-        <FormLabel>Email address</FormLabel>
-        <Input
-          type="email"
-          data-testid="email-input"
-          onChange={emailValueHandler}
-        />
-        <FormHelperText>이메일을 입력해 주세요</FormHelperText>
-        <FormLabel>Password</FormLabel>
-        <Input
-          type="password"
-          data-testid="password-input"
-          onChange={passwordValueHandler}
-        />
-        <FormHelperText mb={6}>
-          비밀번호는 8자리 이상 입력해주세요
-        </FormHelperText>
+        <EmailInput onChange={emailValueHandler} />
+        <PasswordInput onChange={passwordValueHandler} />
         <Button
           type="submit"
           mb={6}

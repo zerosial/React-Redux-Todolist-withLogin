@@ -1,10 +1,18 @@
 import { Container, Grid } from "@chakra-ui/react";
 import { postSignUp } from "components/Api/Sign";
 import SignForm from "components/Sign/SignForm";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const SighUp = () => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = window.localStorage.getItem("access_token");
+    if (token) {
+      navigate("/todo");
+    }
+  }, [navigate]);
 
   const submitHandler = async (e: any) => {
     e.preventDefault();
