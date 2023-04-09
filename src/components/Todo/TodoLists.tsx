@@ -3,11 +3,16 @@ import TodoInput from "./TodoInput";
 import { createTodo, getTodos } from "components/Api/Todo";
 import TodoItemList from "./TodoItemList";
 import { DUMMY_DATA } from "utils/constants";
+import { setToken } from "components/Api";
 
 const TodoLists = () => {
   const [todoData, setTodoData] = useState(DUMMY_DATA);
 
   useEffect(() => {
+    const token = window.localStorage.getItem("access_token");
+    if (token) {
+      setToken(token);
+    }
     const getData = async () => {
       const data = await getTodos();
       setTodoData(data);

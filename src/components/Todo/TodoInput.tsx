@@ -1,3 +1,5 @@
+import { Button, Flex, Input } from "@chakra-ui/react";
+
 interface TodoInputProps {
   onAddTodo: (e: React.FormEvent<HTMLFormElement>) => void;
 }
@@ -5,8 +7,10 @@ interface TodoInputProps {
 const TodoInput = ({ onAddTodo }: TodoInputProps) => {
   return (
     <form onSubmit={onAddTodo}>
-      <input data-testid="new-todo-input" />
-      <button data-testid="new-todo-add-button">추가</button>
+      <Flex gap={4}>
+        <Input data-testid="new-todo-input" w={80} />
+        <Button data-testid="new-todo-add-button">추가</Button>
+      </Flex>
     </form>
   );
 };

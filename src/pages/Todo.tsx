@@ -1,5 +1,4 @@
 import { Container } from "@chakra-ui/react";
-import { setToken } from "components/Api";
 import TodoLists from "components/Todo/TodoLists";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -9,9 +8,7 @@ const Todo = () => {
 
   useEffect(() => {
     const token = window.localStorage.getItem("access_token");
-    if (token) {
-      setToken(token);
-    } else {
+    if (!token) {
       navigate("/signin");
     }
   }, [navigate]);
