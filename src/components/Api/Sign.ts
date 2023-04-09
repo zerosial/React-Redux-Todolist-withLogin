@@ -1,9 +1,5 @@
+import { SignParams } from "types/Api";
 import { publicApi, setToken } from ".";
-
-interface SignParams {
-  email: string;
-  password: string;
-}
 
 export async function postSignUp({ email, password }: SignParams) {
   try {

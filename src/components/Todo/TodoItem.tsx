@@ -1,14 +1,7 @@
 import { Button, Divider } from "@chakra-ui/react";
 import { updateTodo } from "components/Api/Todo";
 import { useState } from "react";
-
-interface TodoItemProps {
-  id: string;
-  title: string;
-  isCompleted: boolean;
-  onModify: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  onDelete: (e: React.FormEvent<HTMLButtonElement>) => void;
-}
+import { TodoItemProps } from "types/Todo";
 
 const TodoItem = ({
   id,

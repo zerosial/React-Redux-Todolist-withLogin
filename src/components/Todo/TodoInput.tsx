@@ -1,8 +1,5 @@
 import { Button, Flex, Input } from "@chakra-ui/react";
-
-interface TodoInputProps {
-  onAddTodo: (e: React.FormEvent<HTMLFormElement>) => void;
-}
+import { TodoInputProps } from "types/Todo";
 
 const TodoInput = ({ onAddTodo }: TodoInputProps) => {
   return (

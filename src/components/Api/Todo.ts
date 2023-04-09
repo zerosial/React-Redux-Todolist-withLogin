@@ -1,10 +1,5 @@
+import { TodoParams } from "types/Api";
 import { publicApi } from ".";
-
-interface TodoParams {
-  todo?: string;
-  id?: string;
-  isCompleted?: boolean;
-}
 
 export async function createTodo({ todo }: TodoParams) {
   try {

@@ -3,11 +3,7 @@ import { useState } from "react";
 import EmailInput from "./EmailInput";
 import PasswordInput from "./PasswordInput";
 import { isEmailValid, isPasswordValid } from "utils/validcheck";
-
-interface SignFormProps {
-  title: string;
-  onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
-}
+import { SignFormProps } from "types/Sign";
 
 const SignForm = ({ title, onSubmit }: SignFormProps) => {
   const [isDisabled, setIsDisabled] = useState(true);

@@ -2,12 +2,7 @@ import { useState } from "react";
 import TodoItem from "./TodoItem";
 import TodoUpdateItem from "./TodoUpdateItem";
 import { deleteTodo, updateTodo } from "components/Api/Todo";
-
-interface TodoItemListProps {
-  id: string;
-  title: string;
-  isCompleted: boolean;
-}
+import { TodoItemListProps } from "types/Todo";
 
 const TodoItemList = ({ id, title, isCompleted }: TodoItemListProps) => {
   const [isDeleted, setIsDeleted] = useState(false);

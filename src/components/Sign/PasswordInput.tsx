@@ -1,10 +1,7 @@
 import { Input, FormLabel, FormHelperText } from "@chakra-ui/react";
+import { InputProps } from "types/Sign";
 
-interface PasswordInputProps {
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}
-
-const PasswordInput = ({ onChange }: PasswordInputProps) => {
+const PasswordInput = ({ onChange }: InputProps) => {
   return (
     <>
       <FormLabel>Password</FormLabel>
