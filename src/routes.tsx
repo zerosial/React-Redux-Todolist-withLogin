@@ -4,6 +4,7 @@ import Layout from "pages/Layout";
 import SighUp from "pages/SignUp";
 import SignIn from "pages/SignIn";
 import Todo from "pages/Todo";
+import Notfound from "pages/Notfound";
 
 export const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ export const router = createBrowserRouter([
       {
         path: "/todo",
         element: <Todo />,
+      },
+      {
+        path: "/*",
+        element: <Notfound />,
       },
     ],
   },
