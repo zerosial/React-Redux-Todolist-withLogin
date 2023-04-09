@@ -2,15 +2,21 @@ import { Button, FormControl } from "@chakra-ui/react";
 import { useState } from "react";
 import EmailInput from "./EmailInput";
 import PasswordInput from "./PasswordInput";
+import { isEmailValid, isPasswordValid } from "utils/validcheck";
 
-const SignForm = ({ title, onSubmit }: any) => {
+interface SignFormProps {
+  title: string;
+  onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+}
+
+const SignForm = ({ title, onSubmit }: SignFormProps) => {
   const [isDisabled, setIsDisabled] = useState(true);
   const [emailValid, setEmailValid] = useState(false);
   const [passwordValid, setPasswordValid] = useState(false);
 
   const emailValueHandler = (e: any) => {
     const email = String(e.target.value);
-    if (email.includes("@")) {
+    if (isEmailValid(email)) {
       setEmailValid(true);
       if (passwordValid) {
         setIsDisabled(false);
@@ -23,7 +29,7 @@ const SignForm = ({ title, onSubmit }: any) => {
 
   const passwordValueHandler = (e: any) => {
     const password = String(e.target.value);
-    if (password.length >= 8) {
+    if (isPasswordValid(password)) {
       setPasswordValid(true);
       if (emailValid) {
         setIsDisabled(false);

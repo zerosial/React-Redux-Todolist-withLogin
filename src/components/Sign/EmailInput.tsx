@@ -1,6 +1,10 @@
 import { Input, FormLabel, FormHelperText } from "@chakra-ui/react";
 
-const EmailInput = ({ onChange }: any) => {
+interface EmailInputProps {
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+const EmailInput = ({ onChange }: EmailInputProps) => {
   return (
     <>
       <FormLabel>Email address</FormLabel>

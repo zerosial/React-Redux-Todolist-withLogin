@@ -1,6 +1,11 @@
 import { publicApi, setToken } from ".";
 
-export async function postSignUp({ email, password }: any) {
+interface SignParams {
+  email: string;
+  password: string;
+}
+
+export async function postSignUp({ email, password }: SignParams) {
   try {
     const response = await publicApi.post(`/auth/signup`, {
       email,
@@ -14,7 +19,7 @@ export async function postSignUp({ email, password }: any) {
   }
 }
 
-export async function postSignIn({ email, password }: any) {
+export async function postSignIn({ email, password }: SignParams) {
   try {
     const response = await publicApi.post(`/auth/signin`, {
       email,

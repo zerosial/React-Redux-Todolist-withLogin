@@ -1,6 +1,12 @@
 import { publicApi } from ".";
 
-export async function createTodo({ todo }: any) {
+interface TodoParams {
+  todo?: string;
+  id?: string;
+  isCompleted?: boolean;
+}
+
+export async function createTodo({ todo }: TodoParams) {
   try {
     const response = await publicApi.post(`/todos`, {
       todo,
@@ -24,21 +30,21 @@ export async function getTodos() {
   }
 }
 
-export async function updateTodo({ id, todo, isCompleted }: any) {
+export async function updateTodo({ id, todo, isCompleted }: TodoParams) {
   try {
     const response = await publicApi.put(`/todos/${id}`, {
       todo,
       isCompleted,
     });
     if (response.status === 200) {
-      return response.data;
+      return true;
     }
   } catch (error) {
     throw new Error((error as Error).message);
   }
 }
 
-export async function deleteTodo({ id }: any) {
+export async function deleteTodo({ id }: TodoParams) {
   try {
     const response = await publicApi.delete(`/todos/${id}`);
     if (response.status === 204) {
