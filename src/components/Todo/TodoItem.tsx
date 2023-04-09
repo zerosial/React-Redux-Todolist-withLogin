@@ -1,7 +1,21 @@
 import { updateTodo } from "components/Api/Todo";
 import { useState } from "react";
 
-const TodoItem = ({ id, title, isCompleted, onModify, onDelete }: any) => {
+interface TodoItemProps {
+  id: string;
+  title: string;
+  isCompleted: boolean;
+  onModify: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  onDelete: (e: React.FormEvent<HTMLButtonElement>) => void;
+}
+
+const TodoItem = ({
+  id,
+  title,
+  isCompleted,
+  onModify,
+  onDelete,
+}: TodoItemProps) => {
   const [isChecked, setIsChecked] = useState(isCompleted);
 
   const checkboxHandler = async () => {

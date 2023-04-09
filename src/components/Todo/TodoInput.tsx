@@ -1,4 +1,8 @@
-const TodoInput = ({ onAddTodo }: any) => {
+interface TodoInputProps {
+  onAddTodo: (e: React.FormEvent<HTMLFormElement>) => void;
+}
+
+const TodoInput = ({ onAddTodo }: TodoInputProps) => {
   return (
     <form onSubmit={onAddTodo}>
       <input data-testid="new-todo-input" />

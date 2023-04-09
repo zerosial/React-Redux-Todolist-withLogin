@@ -1,13 +1,21 @@
 import { updateTodo } from "components/Api/Todo";
 import { useState } from "react";
 
+interface TodoUpdateItemProps {
+  id: string;
+  title: string;
+  isCompleted: boolean;
+  onCancelModify: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  onSubmitModify: (inputValue: string) => void;
+}
+
 const TodoUpdateItem = ({
   id,
   title,
   isCompleted,
   onCancelModify,
   onSubmitModify,
-}: any) => {
+}: TodoUpdateItemProps) => {
   const [isChecked, setIsChecked] = useState(isCompleted);
   const [inputValue, setInputValue] = useState(title);
 
@@ -16,11 +24,11 @@ const TodoUpdateItem = ({
     setIsChecked(!isChecked);
   };
 
-  const inputHandler = (e: any) => {
+  const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
   };
 
-  const enterHandler = (e: any) => {
+  const enterHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       onSubmitModify(inputValue);
     }

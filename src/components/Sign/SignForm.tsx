@@ -14,7 +14,7 @@ const SignForm = ({ title, onSubmit }: SignFormProps) => {
   const [emailValid, setEmailValid] = useState(false);
   const [passwordValid, setPasswordValid] = useState(false);
 
-  const emailValueHandler = (e: any) => {
+  const emailValueHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const email = String(e.target.value);
     if (isEmailValid(email)) {
       setEmailValid(true);
@@ -27,7 +27,7 @@ const SignForm = ({ title, onSubmit }: SignFormProps) => {
     }
   };
 
-  const passwordValueHandler = (e: any) => {
+  const passwordValueHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const password = String(e.target.value);
     if (isPasswordValid(password)) {
       setPasswordValid(true);

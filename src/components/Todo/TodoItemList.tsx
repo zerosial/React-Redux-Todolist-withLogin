@@ -3,7 +3,13 @@ import TodoItem from "./TodoItem";
 import TodoUpdateItem from "./TodoUpdateItem";
 import { deleteTodo, updateTodo } from "components/Api/Todo";
 
-const TodoItemList = ({ id, title, isCompleted }: any) => {
+interface TodoItemListProps {
+  id: string;
+  title: string;
+  isCompleted: boolean;
+}
+
+const TodoItemList = ({ id, title, isCompleted }: TodoItemListProps) => {
   const [isDeleted, setIsDeleted] = useState(false);
   const [isUpdated, setIsUpdated] = useState(false);
   const [todoTitle, setTodoTitle] = useState(title);
@@ -25,8 +31,7 @@ const TodoItemList = ({ id, title, isCompleted }: any) => {
     setIsUpdated(false);
   };
 
-  const submitModifyHandler = async (inputValue: any) => {
-    console.log(inputValue);
+  const submitModifyHandler = async (inputValue: string) => {
     await updateTodo({ id, todo: inputValue, isCompleted });
     setTodoTitle(inputValue);
     setIsUpdated(false);
