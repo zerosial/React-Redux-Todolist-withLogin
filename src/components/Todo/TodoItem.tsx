@@ -1,3 +1,4 @@
+import { Button, Divider } from "@chakra-ui/react";
 import { updateTodo } from "components/Api/Todo";
 import { useState } from "react";
 
@@ -29,12 +30,23 @@ const TodoItem = ({
         <input type="checkbox" checked={isChecked} onChange={checkboxHandler} />
         <span>{title}</span>
       </label>
-      <button data-testid="modify-button" onClick={onModify}>
+      <Button
+        ml={8}
+        colorScheme="blue"
+        data-testid="modify-button"
+        onClick={onModify}
+      >
         수정
-      </button>
-      <button data-testid="delete-button" onClick={onDelete}>
+      </Button>
+      <Button
+        ml={8}
+        colorScheme="red"
+        data-testid="delete-button"
+        onClick={onDelete}
+      >
         삭제
-      </button>
+      </Button>
+      <Divider mt={2} mb={2} />
     </li>
   );
 };

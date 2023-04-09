@@ -1,3 +1,4 @@
+import { Button, Divider } from "@chakra-ui/react";
 import { updateTodo } from "components/Api/Todo";
 import { useState } from "react";
 
@@ -45,15 +46,23 @@ const TodoUpdateItem = ({
           onKeyDown={enterHandler}
         />
       </label>
-      <button
+      <Button
+        ml={8}
+        colorScheme="blue"
         data-testid="submit-button"
         onClick={() => onSubmitModify(inputValue)}
       >
         제출
-      </button>
-      <button data-testid="cancel-button" onClick={onCancelModify}>
+      </Button>
+      <Button
+        ml={8}
+        colorScheme="red"
+        data-testid="cancel-button"
+        onClick={onCancelModify}
+      >
         취소
-      </button>
+      </Button>
+      <Divider mt={2} mb={2} />
     </li>
   );
 };

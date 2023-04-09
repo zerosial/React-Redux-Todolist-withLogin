@@ -1,5 +1,4 @@
-import { Button, Container, Flex, Heading } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { Container, Heading } from "@chakra-ui/react";
 
 const Home = () => {
   return (
