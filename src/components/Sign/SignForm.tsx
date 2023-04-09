@@ -48,6 +48,7 @@ const SignForm = ({ title, onSubmit }: SignFormProps) => {
         <Button
           type="submit"
           mb={6}
+          ml={20}
           data-testid="signin-button"
           w={80}
           isDisabled={isDisabled}
