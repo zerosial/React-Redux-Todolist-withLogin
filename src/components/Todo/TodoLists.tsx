@@ -21,7 +21,6 @@ const TodoLists = () => {
   }, []);
 
   const onAddTodoHandler = async (e: any) => {
-    console.log("add event");
     e.preventDefault();
     const todo = (e.currentTarget.elements[0] as HTMLInputElement).value;
     const data = await createTodo({ todo });
