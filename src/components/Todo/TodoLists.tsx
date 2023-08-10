@@ -31,14 +31,15 @@ const TodoLists = () => {
   return (
     <>
       <TodoInput onAddTodo={onAddTodoHandler} />
-      {todoData.map((item) => (
-        <TodoItemList
-          key={item.id}
-          id={String(item.id)}
-          title={item.todo}
-          isCompleted={item.isCompleted}
-        />
-      ))}
+      {todoData !== DUMMY_DATA &&
+        todoData.map((item) => (
+          <TodoItemList
+            key={item.id}
+            id={String(item.id)}
+            title={item.todo}
+            isCompleted={item.isCompleted}
+          />
+        ))}
     </>
   );
 };

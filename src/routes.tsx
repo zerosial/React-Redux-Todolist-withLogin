@@ -25,7 +25,7 @@ export const router = createBrowserRouter([
         element: <SignIn />,
       },
       {
-        path: "/todo",
+        path: "/todo/tododetail",
         element: <Todo />,
       },
       {

@@ -23,7 +23,7 @@ const Layout = () => {
         <Link to={"/signup"}>
           <Button isDisabled={isAuth}>회원가입</Button>
         </Link>
-        <Link to={"/todo"}>
+        <Link to={"/todo/tododetail"}>
           <Button isDisabled={!isAuth}>투두리스트</Button>
         </Link>
         <ColorModeSwitcher />

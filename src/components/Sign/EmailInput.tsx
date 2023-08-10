@@ -5,7 +5,12 @@ const EmailInput = ({ onChange }: InputProps) => {
   return (
     <>
       <FormLabel>Email address</FormLabel>
-      <Input type="email" data-testid="email-input" onChange={onChange} />
+      <Input
+        type="email"
+        data-testid="email-input"
+        id="email-input"
+        onChange={onChange}
+      />
       <FormHelperText>이메일을 입력해 주세요</FormHelperText>
     </>
   );
