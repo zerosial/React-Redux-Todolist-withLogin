@@ -10,7 +10,7 @@ const SignIn = () => {
   useEffect(() => {
     const token = window.localStorage.getItem("access_token");
     if (token) {
-      navigate("/todo");
+      navigate("/todo/tododetail");
     }
   }, [navigate]);
 
@@ -20,7 +20,7 @@ const SignIn = () => {
     const password = (e.currentTarget.elements[1] as HTMLInputElement).value;
     const isSuccess = await postSignIn({ email, password });
     if (isSuccess) {
-      navigate("/todo");
+      navigate("/todo/tododetail");
     }
   };
 
